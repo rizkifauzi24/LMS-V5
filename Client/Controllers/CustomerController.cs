@@ -14,5 +14,11 @@ namespace Client.Controllers
         {
             return View();
         }
+
+        [Authorize(Roles = "User")]
+        public IActionResult History()
+        {
+            return View();
+        }
     }
 }

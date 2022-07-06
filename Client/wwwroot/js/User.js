@@ -288,7 +288,7 @@ $.ajax({
 
 /*Data Total Courses*/
 $.ajax({
-    url: "https://localhost:44306/API/Courses"
+    url: "https://localhost:44306/API/Course"
 }).done((item) => {
     $("#totalCourses").attr("data-to", item.length);
     console.log(item.length);
@@ -304,6 +304,106 @@ $.ajax({
 
 
 
+$(document).ready(function () {
 
+    var data = parseInt(document.getElementById("UserId").value)
+
+    $('#DataTable_History').DataTable({
+        language: {
+            paginate: {
+                next: '<i class="fas fa-angle-right">',
+                previous: '<i class="fas fa-angle-left">'
+            }
+        },
+        dom: 'lBfrtip',
+        buttons: [
+            //'copy', 'csv', 'excel', 'pdf', 'print'
+            {
+                extend: 'pdf', title: 'Data Master User',
+                className: 'btn btn-sm btn-danger glyphicon glyphicon-file',
+                text: '<i class="far fa-file-pdf"></i>',
+                titleAttr: 'PDF',
+                exportOptions: {
+                    columns: [0, 1, 2, 3]
+                }
+            },
+            {
+                extend: 'excel', title: 'Data Master User',
+                className: 'btn btn-sm btn-success  glyphicon glyphicon-list-alt',
+                text: '<i class="fas fa-file-excel"></i>',
+                titleAttr: 'Excel',
+                exportOptions: {
+                    columns: [0, 1, 2, 3]
+                }
+            },
+            {
+                extend: 'csv', title: 'Data Master User',
+                className: 'btn btn-sm btn-success  glyphicon glyphicon-save-file',
+                text: '<i class="fas fa-file-csv"></i>',
+                titleAttr: 'CSV',
+                exportOptions: {
+                    columns: [0, 1, 2, 3]
+                }
+            },
+            {
+                extend: 'copy', title: 'Data Master User',
+                className: 'btn btn-sm btn-warning  glyphicon glyphicon-duplicate',
+                text: '<i class="far fa-copy"></i>',
+                titleAttr: 'COPY',
+                exportOptions: {
+                    columns: [0, 1, 2, 3]
+                }
+            },
+            {
+                extend: 'print', title: 'Data Master User',
+                className: 'btn btn-sm btn-dark  glyphicon glyphicon-print',
+                text: '<i class="fas fa-print"></i>',
+                titleAttr: 'PRINT',
+                exportOptions: {
+                    columns: [0, 1, 2, 3]
+                }
+            }
+        ],
+        initComplete: function () {
+            var btns = $('.dt-button');
+            //btns.addClass('btn btn-primary btn-sm');
+            btns.removeClass('dt-button');
+        },
+        "ajax": {
+            "url": "https://localhost:44306/API/Transaction/GetTransaction",
+            "dataType": "json",
+            "dataSrc": function (json) {
+                return json.filter(function (item) {
+                    return item.userId == data;
+                });
+            },
+        },
+        "columns": [
+            {
+                "data": null, "sortable": false,
+                render: function (data, type, row, meta) {
+                    return meta.row + meta.settings._iDisplayStart + 1;
+                }
+            },
+            {
+                "data": "course"
+            },
+            {
+                "data": "status"
+            },
+            {
+                "data": "date",
+                "render": function (data) {
+                    var date = new Date(data);
+                    var month = date.getMonth() + 1;
+                    return date.getDate() + "/" + (month.length > 1 ? month : "0" + month) + "/" + date.getFullYear();
+                    //    //return date;
+                }
+            }
+        ]
+
+    });
+
+})
 
 

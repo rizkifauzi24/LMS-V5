@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_LayoutAdmin";
+
+}
+<div class="header bg-gradient-green pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">History</h6>
+                    
+                </div>
+                <!--<div class="col-lg-6 col-5 text-right">
+                    <a href="#" class="btn btn-sm btn-neutral">New</a>
+                    <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Container Chart -->
+<div class="container-fluid mt--6 ">
+
+    @{
+        var userId = User.Claims.Where(x => x.Type.Equals("UserId")).FirstOrDefault().Value;
+        <div class="form-row" hidden>
+            <div class="col-md-12 mb-3">
+                <label for="inputUserId">User ID</label>
+                <input type="text" class="form-control" placeholder="User Id" value="@userId" id="UserId" required>
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col">
+            <div class="card card-stats">
+                <div class="card-body">
+                    <div class="table-responsive py-2">
+                        <table class="table mt-5 mb-5 table-hover" width="100%" cellspacing="0" id="DataTable_History">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th width="20px">No</th>
+                                    <th>Course</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+
+
+
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
