@@ -1,0 +1,251 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_LayoutAdmin";
+
+}
+<style>
+blockquote {
+    border-left:none
+}
+
+.quote-badge {
+    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0.2);   
+}
+
+.quote-box {
+    
+    overflow: hidden;
+    margin-top: 50px;
+    padding-top: -25px;
+    border-radius: 17px;
+    background-color: #4ADFCC;
+    color: white;
+    width: 200px;
+    box-shadow: 2px 2px 2px 2px #E0E0E0;
+    
+}
+
+.quotation-mark {
+    
+    margin-top: 10px;
+    font-weight: bold;
+    color: white;
+    font-family: "Times New Roman", Times, Serif;
+    
+}
+
+.quote-text {
+    
+    font-size: 19px;
+    margin-top: -50px;
+}
+
+.blog-post-bottom pull-right {
+  
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  /*background-color: DodgerBlue;*/
+}
+
+    .flex-container > blockquote {
+        /*background-color: #f1f1f1;*/
+        /*width: 100px;*/
+        margin: 10px;
+        /*text-align: center;
+        line-height: 75px;
+        font-size: 30px;*/
+    }
+
+    #card2 {
+        margin : 50px;
+        /*background-color: DodgerBlue;*/
+    }
+</style>
+<div class="header bg-gradient-green pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Buy Course</h6>
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#">Tables</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Datatables</li>
+                        </ol>
+                    </nav>
+                </div>
+                <!--<div class="col-lg-6 col-5 text-right">
+                    <a href="#" class="btn btn-sm btn-neutral">New</a>
+                    <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col" id="card2">
+            @*<div class="card">
+                <div class="card-header">
+                    <div class="flex-container" id="card2">
+
+                    </div>
+                </div>
+            </div>*@
+
+            
+        </div>
+        </div>
+</div>
+
+<div class="modal fade" id="modalsBuyCourse" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Buy Course</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="form_AddTransaction" class="needs-validation" novalidate>
+                    <div class="row">
+                        <div class="col-md-6">
+                            @{
+                                var userId = User.Claims.Where(x => x.Type.Equals("UserId")).FirstOrDefault().Value;
+                                <div class="form-row" hidden>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="inputUserId">User ID</label>
+                                        <input type="text" class="form-control" placeholder="User Id" value="@userId" id="UuserId" required>
+                                    </div>
+                                </div>
+                            }
+                            <div class="form-row" hidden>
+                                <div class="col-md-12 mb-3">
+                                    <label for="inputTopicId">Course ID</label>
+                                    <input type="text" class="form-control" placeholder="Course Id" id="UcourseId" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="inputTopicId">Topic</label>
+
+                                    <select class="custom-select topics" id="UtopicId" required disabled>
+                                    </select>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid Topic ID
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="inputLastName">Course Name</label>
+                                    <input type="text" class="form-control" placeholder="Course Name" id="UnameCourse" required disabled>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please input course Name
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="inputDescription">Description</label>
+                                    <textarea class="form-control" placeholder="Write Description Course" id="Udescription" required disabled></textarea>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please input Description
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="inputPrice">Price</label>
+                                    <input type="number" class="form-control" placeholder="Price" id="Uprice" required disabled>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please input price
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="inputPrice">File</label>
+                                    <div class="custom-file mb-3">
+                                        <input type="file" class="custom-file-input" id="fileinput" accept="image/gif, image/jpeg, image/png" onchange="readURL(this);" required>
+                                        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                                        <div class="invalid-feedback">Example invalid custom file feedback</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3" hidden>
+                                <label for="validationTextarea">Textarea</label>
+                                <textarea class="form-control is-invalid" id="base" placeholder="Required example textarea" required></textarea>
+                                <div class="invalid-feedback">
+                                    Please enter a message in the textarea.
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <h1>List Section</h1>
+                                <div class="table-responsive py-2">
+                                    <table class="table mt-5 mb-5 table-hover" width="100%" cellspacing="0" id="DataTable_SectionTransaction">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th width="5px">No</th>
+                                                <th>Name</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+

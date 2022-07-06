@@ -1,0 +1,244 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_LayoutUser";
+}
+
+<section id="slider" class="slider-element slider-parallax swiper_wrapper full-screen clearfix">
+
+    <div class="slider-parallax-inner">
+
+        <div class="swiper-container swiper-parent">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide dark" style="background-image: url('/user/assets/images/mcc3.png');">
+                    <div class="container clearfix">
+                        <div class="slider-caption slider-caption-center">
+                            <h2 data-animate="fadeInUp" style="color:black;">Welcome to Segmen 4</h2>
+                            <p class="d-none d-sm-block" data-animate="fadeInUp" style="color:black;" data-delay="200">Metrodata coding camp Batch 66</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide dark">
+                    <div class="container clearfix">
+                    </div>
+                    <div class="video-wrap">
+                        <video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted>
+                            <source src='~/user/images/videos/explore.mp4' type='video/mp4' />
+                            <source src='~/user/images/videos/explore.webm' type='video/webm' />
+                        </video>
+                        <div class="video-overlay" style="background-color: rgba(0,0,0,0.55);"></div>
+                    </div>
+                </div>
+                <div class="swiper-slide" style="background-image: url('/user/assets/images/mcc5.png'); background-position: center top;">
+                    <div class="container clearfix">
+                        <div class="slider-caption">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-arrow-left"><i class="icon-angle-left"></i></div>
+            <div class="slider-arrow-right"><i class="icon-angle-right"></i></div>
+            <div class="slide-number"><div class="slide-number-current"></div><span>/</span><div class="slide-number-total"></div></div>
+        </div>
+
+    </div>
+
+</section>
+
+<!--kotak jumlah-->
+
+<!-- Content
+        ============================================= -->
+<section id="content">
+    <div class="content-wrap">
+
+        <div class="container clearfix">
+
+            <div class="section topmargin nobottommargin nobottomborder">
+                <div class="container clearfix">
+                    <div class="heading-block center nomargin">
+                        <h3>Our Latest Works</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- Portfolio Filter
+        ============================================= -->
+            @*<ul class="portfolio-filter clearfix" data-container="#portfolio">
+
+                <li class="activeFilter"><a href="#" data-filter="*">Show All</a></li>
+                <li><a href="#" data-filter=".pf-icons">Icons</a></li>
+                <li><a href="#" data-filter=".pf-illustrations">Illustrations</a></li>
+                <li><a href="#" data-filter=".pf-uielements">UI Elements</a></li>
+                <li><a href="#" data-filter=".pf-media">Media</a></li>
+                <li><a href="#" data-filter=".pf-graphics">Graphics</a></li>
+
+            </ul> #portfolio-filter end *@
+            <ul class="portfolio-filter clearfix" data-container="#portfolio" id="menuIndra">
+            </ul>
+
+            <div class="portfolio-shuffle" data-container="#portfolio">
+                <i class="icon-random"></i>
+            </div>
+
+            <div class="clear"></div>
+
+            <!-- Portfolio Items
+        ============================================= -->
+            <div id="portfolio" class="portfolio grid-container clearfix">
+
+            </div><!-- #portfolio end -->
+
+        </div>
+
+        <!--data user-->
+        <div class="section topmargin nobottommargin nobottomborder">
+            <div class="container clearfix">
+                <div class="heading-block center nomargin">
+                    <h3>Our Latest Works</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix align-items-stretch bottommargin-lg">
+
+            <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #515875;">
+                <i class="i-plain i-xlarge divcenter icon-line2-directions"></i>
+                <div class="counter counter-lined"><span id="totalUsers" data-from="0" data-refresh-interval="50" data-speed="2000"></span></div>
+                <h5>User</h5>
+            </div>
+
+            <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #576F9E;">
+                <i class="i-plain i-xlarge divcenter icon-line2-graph"></i>
+                <div class="counter counter-lined"><span id="totalTransactions" data-from="0" data-refresh-interval="25" data-speed="3500"></span></div>
+                <h5>Transaction</h5>
+            </div>
+
+            <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #6697B9;">
+                <i class="i-plain i-xlarge divcenter icon-line2-layers"></i>
+                <div class="counter counter-lined"><span id="totalTopics" data-from="0" data-refresh-interval="25" data-speed="3500"></span></div>
+                <h5>Topic</h5>
+            </div>
+
+            <div class="col-lg-3 col-md-6 dark center col-padding" style="background-color: #88C3D8;">
+                <i class="i-plain i-xlarge divcenter icon-line2-clock"></i>
+                <div class="counter counter-lined"><span id="totalCourses" data-from="0" data-refresh-interval="30" data-speed="2700"></span></div>
+                <h5>Course</h5>
+            </div>
+
+        </div>
+        <div class="section">
+            <div class="container clearfix">
+
+                <div class="heading-block topmargin-sm center">
+                    <h3>Meet Our Team</h3>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 bottommargin">
+
+                        <div class="team">
+                            <div class="team-image">
+                                <img src="~/user/assets/images/team/3.jpg" alt="John Doe">
+                            </div>
+                            <div class="team-desc team-desc-bg">
+                                <div class="team-title"><h4>John Doe</h4><span>CEO</span></div>
+                                <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+                                    <i class="icon-facebook"></i>
+                                    <i class="icon-facebook"></i>
+                                </a>
+                                <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+                                    <i class="icon-twitter"></i>
+                                    <i class="icon-twitter"></i>
+                                </a>
+                                <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
+                                    <i class="icon-gplus"></i>
+                                    <i class="icon-gplus"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 bottommargin">
+
+                        <div class="team">
+                            <div class="team-image">
+                                <img src="~/user/assets/images/team/2.jpg" alt="Josh Clark">
+                            </div>
+                            <div class="team-desc team-desc-bg">
+                                <div class="team-title"><h4>Josh Clark</h4><span>Co-Founder</span></div>
+                                <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+                                    <i class="icon-facebook"></i>
+                                    <i class="icon-facebook"></i>
+                                </a>
+                                <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+                                    <i class="icon-twitter"></i>
+                                    <i class="icon-twitter"></i>
+                                </a>
+                                <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
+                                    <i class="icon-gplus"></i>
+                                    <i class="icon-gplus"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 bottommargin">
+
+                        <div class="team">
+                            <div class="team-image">
+                                <img src="~/user/assets/images/team/8.jpg" alt="Mary Jane">
+                            </div>
+                            <div class="team-desc team-desc-bg">
+                                <div class="team-title"><h4>Mary Jane</h4><span>Sales</span></div>
+                                <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+                                    <i class="icon-facebook"></i>
+                                    <i class="icon-facebook"></i>
+                                </a>
+                                <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+                                    <i class="icon-twitter"></i>
+                                    <i class="icon-twitter"></i>
+                                </a>
+                                <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
+                                    <i class="icon-gplus"></i>
+                                    <i class="icon-gplus"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 bottommargin">
+
+                        <div class="team">
+                            <div class="team-image">
+                                <img src="~/user/assets/images/team/4.jpg" alt="Nix Maxwell">
+                            </div>
+                            <div class="team-desc team-desc-bg">
+                                <div class="team-title"><h4>Nix Maxwell</h4><span>Support</span></div>
+                                <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+                                    <i class="icon-facebook"></i>
+                                    <i class="icon-facebook"></i>
+                                </a>
+                                <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+                                    <i class="icon-twitter"></i>
+                                    <i class="icon-twitter"></i>
+                                </a>
+                                <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
+                                    <i class="icon-gplus"></i>
+                                    <i class="icon-gplus"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+   
+
+</section><!-- #content end -->

@@ -1,0 +1,212 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_LayoutAdmin";
+
+}
+<div class="header bg-gradient-green pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Section</h6>
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#">Tables</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Datatables</li>
+                        </ol>
+                    </nav>
+                </div>
+                <!--<div class="col-lg-6 col-5 text-right">
+                     <a href="#" class="btn btn-sm btn-neutral">New</a>
+                     <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <button type="button" class="btn btn-primary mb-3 btn-sm" data-toggle="modal" data-target="#modalsSection">
+                        <i class="fas fa-plus-circle"></i> Add
+                    </button>
+                </div>
+                <div class="table-responsive py-2">
+                    <table class="table mt-5 mb-5 table-hover" width="100%" cellspacing="0" id="DataTable_Section">
+                        <thead class="thead-light">
+                            <tr>
+                                <th width="20px">No</th>
+                                <th>Course</th>
+                                <th>Name</th>
+                                <th>Link</th>
+                                <th width="80px">Action</th>
+                            </tr>
+                        </thead>
+                        @*<tfoot>
+                                <tr>
+                                    <th>No</th>
+                                    <th>TopicId</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Action</th>
+                                </tr>
+                            </tfoot>*@
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modals Insert Data course -->
+<div class="modal fade" id="modalsSection" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Section</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="form_addSection" class="needs-validation" novalidate>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="inputCourseId">Course ID</label>
+                            <select class="custom-select coursee" id="courseId" required>
+                            </select>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please provide a valid Topic ID
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="inputLastName">Section Name</label>
+                            <input type="text" class="form-control" placeholder="Section Name" id="nameSection" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please input course Name
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="inputDescription">Description</label>
+                            <textarea class="form-control" placeholder="Write Description Course" id="description" required></textarea>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please input Description
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="inputLink">Link</label>
+                            <input type="text" class="form-control" placeholder="Link" id="link" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please input link
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modals Update Data course -->
+<div class="modal fade" id="modalsUpdateSection" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Section</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="form_updateSection" class="needs-validation" novalidate>
+                    <div hidden class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="inputTopicId">Course ID</label>
+                            <input type="text" class="form-control" placeholder="Course Id" id="UsectionId" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="inputTopicId">Topic ID</label>
+                            <select class="custom-select coursees" id="UcourseId" required>
+                            </select>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please provide a valid Topic ID
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="inputLastName">Course Name</label>
+                            <input type="text" class="form-control" placeholder="Course Name" id="UnameSection" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please input course Name
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="inputDescription">Description</label>
+                            <textarea class="form-control" placeholder="Write Description Course" id="Udescription" required></textarea>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please input Description
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="inputPrice">Price</label>
+                            <input type="text" class="form-control" placeholder="Link" id="Ulink" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please input price
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

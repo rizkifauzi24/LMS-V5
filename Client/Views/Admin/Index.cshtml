@@ -1,0 +1,150 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_LayoutAdmin";
+
+}
+
+<!-- Top Content -->
+<div class="header bg-gradient-success pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Home</h6>
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
+
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-lg-6 col-5 text-right">
+                    <a class="btn btn-info">
+                        <span>Waiting for Approvement Payments</span>
+                        <span class="badge badge-md badge-circle badge-floating badge-danger border-white" id="totalWaiting"></span>
+                    </a>
+                </div>
+            </div>
+            <!-- Card stats -->
+            <div class="row">
+                <div class="col-xl-4 col-md-6">
+                    <a href="~/Admin/UserData">
+                        <div class="card card-stats">
+                            <!-- Card body Total Users -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Total User</h5>
+                                        <span class="h2 font-weight-bold mb-0" id="totalUser"></span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                            <i class="fas fa-user"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-xl-4 col-md-6">
+                    <a href="~/Admin/CourseData">
+                        <div class="card card-stats">
+                            <!-- Card body Total Courses-->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Total Course</h5>
+                                        <span class="h2 font-weight-bold mb-0" id="totalCourse"></span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                                            <i class="fas fa-book-open"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xl-4 col-md-6">
+                    <a href="~/Admin/TransactionData">
+                        <div class="card card-stats">
+                            <!-- Card body Total Transactions -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Total Transactions</h5>
+                                        <span class="h2 font-weight-bold mb-0" id="TotalTr"></span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-gradient-success text-white rounded-circle shadow">
+                                            <i class="fas fa-money-bill-wave"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Container Chart -->
+<div class="container-fluid mt--6 ">
+    <div class="row">
+        <div class="col-6">
+            <div class="card card-stats" style="height:100%;">
+                <div class="card-body">
+
+                    <div class="row">
+                        <div id="Chart" style="height:100%; width:85%">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="card card-stats" style="height:100%;">
+                <div class="card-body">
+
+                    <div class="row">
+                        <div id="myChart" style="height:100%; width:85%">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid" style="margin-top:50px;">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="mb-0">Waiting Approval !</h1>
+                </div>
+                <div class="card-body">
+
+
+                    @*ISI DATATABLE TRANSACTION YANG STATUSNYA WAITING*@
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

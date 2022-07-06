@@ -1,0 +1,191 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_LayoutAdmin";
+
+}
+<div class="header bg-gradient-green pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Data Transactions Management  - Waiting</h6>
+                    @*  <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                                <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="#">Tables</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Waiting</li>
+                            </ol>
+                        </nav>*@
+                </div>
+                <!--<div class="col-lg-6 col-5 text-right">
+                    <a href="#" class="btn btn-sm btn-neutral">New</a>
+                    <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+                 </div>-->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header mb-sm-0">
+                    @*<button type="button" class="btn btn-primary mb-3 btn-sm" data-toggle="modal" data-target="#modalsCourse">
+                            <i class="fas fa-plus-circle"></i> Add
+                        </button>*@
+                </div>
+                <div class="table-responsive py-2">
+                    <table class="table mt-5 mb-5 table-hover" width="100%" cellspacing="0" id="DataTable_transactionWaiting">
+                        <thead class="thead-light">
+                            <tr>
+                                <th width="20px">No</th>
+                                <th>User</th>
+                                <th>Course</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th width="80px">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modals Detail Transaction Waiting-->
+<div class="modal fade" id="modalsTransactionWaiting" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Detail Transaction</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-5 ">
+                        <div class="row">
+                            <div class="col-3">
+                                <label>Name </label>
+                            </div>
+                            <div class="col-9">
+                                <label id="TWName"></label>
+                                <input type="text" class="form-control" value="" id="TWuserId" hidden>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3">
+                                <label>Course </label>
+                            </div>
+                            <div class="col-9">
+                                <label id="TWCourse"></label>
+                                <input type="text" class="form-control" value="" id="TWcourseId" hidden>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label>Date </label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" class="form-control" value="" id="TWdate1" hidden>
+                                <label id="TWDate"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-7 ">
+                        <input type="text" class="form-control" value="" id="TW_transactionId" hidden>
+                        <textarea id="TWGambar" hidden></textarea>
+
+                        <center>
+                            <img id="imgGetProof" src="" alt="" srcset="" width="300">
+                        </center>
+                    </div>
+                </div>
+
+
+
+
+                <!--<div class="form-group">
+                    <label for="degree">Transaction ID</label>
+                    <input type="text" class="form-control" value="" id="TW_transactionId" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="degree">User</label>
+                    <input type="text" class="form-control" value="" id="TW_userId" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="degree">Course</label>
+                    <input type="text" class="form-control" value="" id="TW_courseId" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="degree">Date</label>
+                    <input type="text" class="form-control" value="" id="TW_date" disabled>
+                </div>
+                <div class="form-group">
+                    <div class="col">
+                        <label for="degree">Proof of Payment</label>
+                    </div>
+                    <div class="col">
+                        <center>
+                            <img id="imgGetProof" src="" alt="" srcset="" width="200">
+                        </center>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="degree">Status</label>-->
+                @*<input type="text" class="form-control" value="" id="TW_status" disabled>*@
+                <!--<select class="custom-select" id="TW_status" required>
+                        <option value="0">Waiting</option>
+                        <option value="1">Decline</option>
+                        <option value="2">Accept</option>
+                    </select>
+                </div>-->
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-outline-success" onclick="TACC()">Accept</a>
+                <a class="btn btn-outline-danger" onclick="TDEC()">Decline</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#encode").submit(function (e) {
+            e.preventDefault();
+            let file = document.querySelector("#uploadTest")
+            imageUploaded(file, e => {
+                $("#stringBase64").val(e);
+            })
+
+        });
+        $("#decode").submit(function (e) {
+            e.preventDefault();
+            let string = $("#stringBase64").val();
+            $("img").attr("src", "data:image/png;base64," + string);
+            png64 = "data:image/png;base64," + string;
+            $('#downloadPNG').attr('href', png64);
+        });
+    })
+    function imageUploaded(file, callback) {
+        var file = file['files'][0];
+        var reader = new FileReader();
+        let base64String
+        let imageBase64Stringsep
+        let xxx
+        reader.onload = function () {
+            base64String = reader.result.replace("data:", "")
+                .replace(/^.+,/, "");
+
+            imageBase64Stringsep = base64String;
+            callback(imageBase64Stringsep)
+        }
+        reader.readAsDataURL(file);
+    }
+</script>

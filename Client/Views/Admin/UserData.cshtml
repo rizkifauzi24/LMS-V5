@@ -1,0 +1,295 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_LayoutAdmin";
+
+}
+<div class="header bg-gradient-green pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">User</h6>
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#">Tables</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Datatables</li>
+                        </ol>
+                    </nav>
+                </div>
+                <!--<div class="col-lg-6 col-5 text-right">
+                    <a href="#" class="btn btn-sm btn-neutral">New</a>
+                    <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <button type="button" class="btn btn-primary mb-3 btn-sm" data-toggle="modal" data-target="#addData"><i class="fas fa-plus-circle"></i> Add</button>
+                </div>
+                <div class="table py-2">
+                    <table class="table mt-5 mb-5 table-hover" width="100%" cellspacing="0" id="DataTable_User">
+                        <thead class="thead-light">
+                            <tr>
+                                <th width="20px">No</th>
+                                <th>Name</th>
+                                <th>Gender</th>
+                                <th>BirthDate</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th width="80px">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+
+                @*Modal Add Customer*@
+                <div class="modal fade" id="addData" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form class="needs-validation" data-toggle="validator" novalidate id="FormAddCustomer">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+
+                                                <label for="firstName">First Name</label>
+                                                <input class="form-control" placeholder="First Name" type="text" id="FirstName" required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Please input course Name
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="phone">Last Name</label>
+                                                <input class="form-control" placeholder="Last Name" type="text" id="LastName" required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Please input course Name
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="salary">Gender</label>
+                                                <select class="custom-select" id="Gender" required>
+                                                    <option selected disabled value="">Select Gender</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Please input course Name
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="email">Birth Date</label>
+                                                <input type="date" class="form-control" id="BirthDate" required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Please input course Name
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="degree">Phone</label>
+                                                <input type="text" class="form-control" placeholder="Phone Number" id="Phone" required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Please input course Name
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="degree">Email</label>
+                                                <input class="form-control" placeholder="Email" type="email" id="Email" required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Please input course Name
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                @*Modal Edit Customer*@
+                <div class="modal fade" id="updateData" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="needs-validation" data-toggle="validator" novalidate id="FormUpdateCustomer">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="firstName">First Name</label>
+                                                <input type="hidden" class="form-control" id="userId2" value="" aria-describedby="" required>
+                                                <input class="form-control" placeholder="First Name" value="" type="text" id="FirstName2" required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Please input course Name
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="phone">Last Name</label>
+                                                <input class="form-control" placeholder="Last Name" value="" type="text" id="LastName2" required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Please input course Name
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="salary">Gender</label>
+                                                <select class="custom-select" id="Gender2" required>
+                                                    <option selected disabled value="">Select Gender</option>
+                                                    <option value="0">Male</option>
+                                                    <option value="1">Female</option>
+                                                </select>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Please input course Name
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+
+                                            <div class="form-group">
+                                                <label for="email">Birth Date</label>
+                                                <input type="date" class="form-control" value="" id="BirthDate2" required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Please input course Name
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="degree">Phone</label>
+                                                <input type="text" class="form-control" placeholder="Phone Number" value="" id="Phone2" disabled>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Please input course Name
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="degree">Email</label>
+                                                <input class="form-control" placeholder="Email" value="" type="email" id="Email2" disabled>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Please input course Name
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                    </div>
+                                </form>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>

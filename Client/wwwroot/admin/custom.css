@@ -1,0 +1,5 @@
+﻿.nav-item.active {
+    color: #525f7f !important;
+    border-color: #dee2e6 #dee2e6 #f8f9fe !important;
+    background-color: #f8f9fe !important;
+}

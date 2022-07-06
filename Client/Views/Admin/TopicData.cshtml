@@ -1,0 +1,167 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_LayoutAdmin";
+
+}
+<div class="header bg-gradient-success pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Topic</h6>
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#">Tables</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Datatables</li>
+                        </ol>
+                    </nav>
+                </div>
+                <!--<div class="col-lg-6 col-5 text-right">
+                    <a href="#" class="btn btn-sm btn-neutral">New</a>
+                    <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <!-- Button trigger modal add Topic -->
+                    <button type="button" class="btn btn-primary mb-3 btn-sm" data-toggle="modal" data-target="#ModalTopic">
+                        <i class="fas fa-plus-circle"></i> Add
+                    </button>
+                    <!-- Modal ADD Topic -->
+                    <div class="modal fade" id="ModalTopic" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Add Topic</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form id="topicInsert" class="needs-validation" novalidate>
+                                    <div class="modal-body">
+
+
+                                        <div class="form-row">
+                                            <div class="col-md-12 mb-3">
+                                                <label for="inputLastName">Topic Name</label>
+                                                <input type="text" class="form-control" placeholder="Topic Name" id="IName" required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Please input course Name
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                            @*<div class="form-group">
+                <label for="topic">Topic Name</label>
+                <div class="input-group input-group-merge input-group-alternative">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-file-signature"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Topic Name" name="Tname" value="" type="text" id="IName" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+            </div>*@
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary my-1">Submit</button>
+                                        </div>
+</form>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Modal Detail Topic -->
+                    <div class="modal fade" id="detailTopic" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Edit Topic</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form id="topicUpdate" class="needs-validation" novalidate>
+                                    <div class="modal-body">
+                                        <div class="form-row">
+                                            <div class="col-md-12 mb-3">
+                                                <label for="inputLastName">Topic Name</label>
+                                                <input type="text" class="form-control" placeholder="Topic Name" id="UTname" required>
+                                                <input type="hidden" id="UTid">
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Please input course Name
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary my-1">Submit</button>
+                                        </div>
+</form>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="table py-2">
+                    <table class="table mt-5 mb-5 table-hover" width="100%" cellspacing="0" id="DataTable_Topic">
+                        <thead class="thead-light">
+                            <tr>
+                                <th width="20px">No</th>
+                                @*<th>TopicId</th>*@
+                                <th>Name</th>
+                                <th width="80px">Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // Disable form submissions if there are invalid fields
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Get the forms we want to add validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+    </script>
+</div>
